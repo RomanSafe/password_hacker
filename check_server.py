@@ -1,4 +1,4 @@
-"""This programme checks web-server login vulnerabilities. It's written during educational training and for educational purposes."""
+"""This programme checks web-server authentication vulnerabilities. It's written during educational training and for educational purposes."""
 from sys import argv
 import socket
 from string import ascii_lowercase, ascii_uppercase, digits
