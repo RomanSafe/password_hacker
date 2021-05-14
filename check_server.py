@@ -1,4 +1,4 @@
-"""This programme is a simple password hacker."""
+"""This programme checks web-server login vulnerabilities. It's written during educational training and for educational purposes."""
 from sys import argv
 import socket
 from string import ascii_lowercase, ascii_uppercase, digits
@@ -21,7 +21,7 @@ class PasswordChecker:
         It get words from a file and generate all possible combinations of upper and lower case for each letter
         for all words.
         """
-        with open("/home/roman/PycharmProjects/Password Hacker/Password Hacker/task/hacking/passwords.txt") as file:
+        with open("./passwords.txt") as file:
             for word in file:
                 word = word.rstrip()
                 letters_list = list(word)
@@ -64,7 +64,7 @@ class PasswordChecker:
             client_socket.connect((self.ip_address, self.port))
             counter = 0
             for password in self.get_case_product(
-                    "/home/roman/PycharmProjects/Password Hacker/Password Hacker/task/hacking/passwords.txt"):
+                    "./passwords.txt"):
                 client_socket.send(password.encode())
                 response = client_socket.recv(512).decode()
                 if "Connection success!" in response:
@@ -113,7 +113,7 @@ class PasswordChecker:
         # counter = 0
         password = " "
         for login in self.get_case_product(
-                "/home/roman/PycharmProjects/Password Hacker/Password Hacker/task/hacking/logins.txt"):
+                "./logins.txt"):
             login = login.rstrip()
             login_password_json, response, _ = self.send_request_get_response(client_socket, login, password)
             if "Wrong login!" in response["result"]:
